@@ -3,5 +3,8 @@
     <project>
         <path>$WS_DIR$\CPU0\CPU0.ewp</path>
     </project>
+    <project>
+        <path>$WS_DIR$\CPU1\CPU1.ewp</path>
+    </project>
     <batchBuild />
 </workspace>
