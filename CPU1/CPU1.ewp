@@ -772,7 +772,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$PROJ_DIR$\..\SDK\devices\LPC55S69\iar\LPC55S69_cm33_core1_flash.icf</state>
+                    <state>$PROJ_DIR$\..\SDK\devices\LPC55S69\iar\LPC55S69_cm33_core1_ram.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
