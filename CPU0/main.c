@@ -43,6 +43,11 @@ int main()
 
   // Set direction for GPIO1 7 as output
   GPIO->DIR[LED_GPIO_BLOCK] |= GPIO_DIR_DIRP(1 << LED_GPIO_PIN);
+
+
+  /**** Mailbox setup for mutex ****/
+  // Enable mailbox clocking
+  SYSCON->AHBCLKCTRLX[0] |=  SYSCON_AHBCLKCTRL0_MAILBOX_MASK;
   
   
   /**** CPU1 (slave) setup ****/
@@ -67,9 +72,14 @@ int main()
   while(1)
   {
     /**** LED blinking ****/
-    GPIO->B[LED_GPIO_BLOCK][LED_GPIO_PIN] = 0;  // Turn led On
+    while (!(MAILBOX->MUTEX & MAILBOX_MUTEX_EX_MASK));  // Try to acquire mutex
+    GPIO->B[LED_GPIO_BLOCK][LED_GPIO_PIN] = 0;          // Turn led On
+
     Delay();
+    
     GPIO->B[LED_GPIO_BLOCK][LED_GPIO_PIN] = 1;  // Turn led off
+    MAILBOX->MUTEX = MAILBOX_MUTEX_EX_MASK;     // Release mutex
+
     Delay();
   }
 }
