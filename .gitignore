@@ -50,3 +50,23 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# IAR files
+*.ninja_deps
+*.ninja_log
+*.xcl
+*.dep
+*.pbi
+*.ninja
+*.pbw
+*.browse
+*.pbd
+*.dnx
+*.ps1
+*.bat
+*.reggroups
+*.sim
+*.out
+*.crun
+*.ewt
+
